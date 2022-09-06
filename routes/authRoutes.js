@@ -11,7 +11,7 @@ module.exports = (app) => {
     passport.authenticate('google', { scope: ['profile','email'] }));
 
     app.get('/auth/google/callback', 
-    passport.authenticate('google', { failureRedirect: '/auth/failure' }),
+    passport.authenticate('google', { scope: ['profile','email'], failureRedirect: '/auth/failure' }),
     function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/api/protected');
