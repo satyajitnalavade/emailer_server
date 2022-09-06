@@ -9,7 +9,7 @@ passport.use(new GoogleStrategy({
     clientID: secrets.googleClientID,
     clientSecret: secrets.googleClientSecret,
     callbackURL: '/auth/google/callback',
-    passReqToCallback: true
+    proxy:true
   },
   function(request,accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ googleId: profile.id }, function (err, user) {
