@@ -11,10 +11,13 @@ passport.use(new GoogleStrategy({
     callbackURL: '/auth/google/callback',
     proxy:true
   },
-  function(request,accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user);
-    })
+  async(request,accessToken, refreshToken, profile, cb)=> {
+    const existingUser = await User.findOne({ googleId: profile.id });
+    if (existingUser){
+      return cb(null, existingUser);
+    }
+    const user = await new User({ googleId: profile.id }).save();
+    cb(null, user);
   }
 ));
 
