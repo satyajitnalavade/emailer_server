@@ -14,7 +14,7 @@ module.exports = (app) => {
     passport.authenticate('google', { scope: ['profile','email'], failureRedirect: '/auth/failure' }),
     function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/api/protected');
+    res.redirect('/api/current_user');
     });
 
     app.get('/', (req,res) => {
@@ -27,14 +27,13 @@ module.exports = (app) => {
     });
 
 
-    app.get('/api/logout', function(req, res, next) {
-        req.logout(function(err) {
-          if (err) { return next(err); }
-          res.redirect('/');
-        });
+    app.get('/api/logout', (req, res) => {
+        req.logout();
+        res.send(req.user);
       });
+    
 
-    app.get('/api/protected', (req,res) => {
+    app.get('/api/current_user', (req,res) => {
         res.send(req.user);
     });
 };
