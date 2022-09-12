@@ -1,2 +1,4 @@
 node_modules
 emailer_dev.js
+.env.development
+.env.production
