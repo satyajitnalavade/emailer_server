@@ -15,11 +15,12 @@ mongoose.connect(uri);
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cookieSession({
-    cookieName: 'session',
-    keys: [secrets.cookieSecret],
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
-  }));
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [secrets.cookieSecret]
+  })
+);
   app.use(passport.initialize());
   app.use(passport.session());
 
