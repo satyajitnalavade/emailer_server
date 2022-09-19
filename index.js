@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const secrets = require('./config/secret');
 
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 const uri = secrets.mongoURI;
@@ -26,6 +27,8 @@ app.use(
 
   require('./routes/authRoutes')(app);
   require('./routes/billingRoutes')(app);
+  require('./routes/surveyRoutes')(app);
+  
 
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));

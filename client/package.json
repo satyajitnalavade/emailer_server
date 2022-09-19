@@ -16,6 +16,7 @@
     "react-scripts": "5.0.1",
     "react-stripe-checkout": "^2.6.3",
     "redux": "^4.2.0",
+    "redux-form": "^8.3.8",
     "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4"
   },
