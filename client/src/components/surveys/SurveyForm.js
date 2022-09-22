@@ -58,7 +58,7 @@ function validate(values){
         errors.recipients='You must provide a recipients';
     }
 
-    errors.emails = validateEmails(values.recipients || '');
+    errors.recipients = validateEmails(values.recipients || '');
     
     return errors;
 }
