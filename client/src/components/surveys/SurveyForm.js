@@ -54,11 +54,11 @@ function validate(values){
         errors.body='You must provide a body';
     }
 
-    if(!values.emails){
-        errors.emails='You must provide a emails';
+    if(!values.recipients){
+        errors.recipients='You must provide a recipients';
     }
 
-    errors.emails = validateEmails(values.emails || '');
+    errors.emails = validateEmails(values.recipients || '');
     
     return errors;
 }
